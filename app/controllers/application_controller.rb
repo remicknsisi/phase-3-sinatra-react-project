@@ -6,4 +6,9 @@ class ApplicationController < Sinatra::Base
     recipes.to_json
   end
 
+  get "/recipes/:id" do
+    recipe = Recipe.find(paramsp[:id])
+    recipe.to_json
+  end
+
 end
