@@ -1,4 +1,4 @@
 class Recipe < ActiveRecord::Base
     belongs_to :chef
-    has_many :ratings
+    has_many :reviews
 end

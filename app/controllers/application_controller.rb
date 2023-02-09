@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/recipes" do
-    recipe = Recipe.create(name:params[:name], instructions:params[:instructions], image_url: params[:image_url], hours: params[:hours], ingredients: params[:ingredients], rating: params[:rating], cuisine_type: params[:cuisine_type])
+    recipe = Recipe.create(name:params[:name], instructions:params[:instructions], image_url: params[:image_url], hours: params[:hours], ingredients: params[:ingredients], rating: params[:rating], cuisine_type: params[:cuisine_type], isFavorited: false)
     recipe.to_json
   end
 
@@ -22,11 +22,13 @@ class ApplicationController < Sinatra::Base
     recipe.to_json
   end
 
-  # update "/recipes/:id" do
-  #   recipe = Recipe.find(params[:id])
-  #   recipe.update()
-  #   recipe.to_json
-  # end
+  patch "/recipes/:id" do
+    recipe = Recipe.find(params[:id])
+    recipe.update(
+      isFavorited: params[:isFavorited]
+    )
+    recipe.to_json
+  end
 
   get "/chefs" do
     chefs = Chef.all

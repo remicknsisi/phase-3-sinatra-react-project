@@ -1,4 +1,4 @@
 class Chef < ActiveRecord::Base
     has_many :recipes
-    has_many :ratings, through: :recipes
+    has_many :reviews, through: :recipes
 end
