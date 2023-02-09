@@ -28,5 +28,18 @@ Chef.create(first_name: "Alton", last_name: "Brown", age: 60, image: "https://en
 Chef.create(first_name: "Ree", last_name: "Drummond", age: 54, image: "https://pbs.twimg.com/profile_images/989486563758354432/2NBOn09O_400x400.jpg")
 Chef.create(first_name: "Remy", last_name: "The Rat", age: 4, image: "https://lumiere-a.akamaihd.net/v1/images/open-uri20150422-20810-f3qxzs_4923c203.jpeg?region=0,0,600,600")
 
+Review.create(author_name: "Bob", comment: "Could you please give the metric weight measurements, and sometime in the next twenty minutes; I’m making this for a dinner party and my guests are already here.", rating: 4, recipe_id: 2)
+Review.create(author_name: "GordanRamsayStan1000", comment: "Gordon Ramsay never fails - my favorite chef does it again!!!!! best lava cake you'll ever try.", rating: 5, recipe_id: 1)
+Review.create(author_name: "tomatojournalist", comment: "Can you give us a calorie breakdown for this?", rating: 4, recipe_id: 3)
+Review.create(author_name: "hoopsquadron", comment: "i dont have an oven, can i still make this? please reply immediately", rating: 3, recipe_id: 4)
+Review.create(author_name: "BridgetAH20", comment: "Due to dietary restrictions, I am only able to eat Yatzhee dice. I made the necessary substitutions, and it turned out great.", rating: 2, recipe_id: 5)
+Review.create(author_name: "kevin", comment: "do NOT recommend", rating: 1, recipe_id: 6)
+Review.create(author_name: "RebeccaBlack405", comment: "Does anyone know if you can make this ahead of time and freeze it?", rating: 5, recipe_id: 7)
+Review.create(author_name: "Foodfootage", comment: "These were delicious, my only complaint is that it was not super crumbly. I followed the recipe and instructions exactly the way they were given.", rating: 3, recipe_id: 8)
+Review.create(author_name: "nancy", comment: "I LOVE this recipe!", rating: 4, recipe_id: 9)
+Review.create(author_name: "CoolDishes", comment: "Best ever", rating: 5, recipe_id: 10)
+Review.create(author_name: "TastyCooked1998", comment: "delicious", rating: 2, recipe_id: 11)
+Review.create(author_name: "maddy26", comment: "Followed this recipe to the T and wouldn't change a thing. so great every time!", rating: 5, recipe_id: 1)
+Review.create(author_name: "Joecartwheel", comment: "These turned out great and are really delicious! Plus, they look fancy. I used just about every bowl in my kitchen, but it was worth it! 🤣", rating: 4, recipe_id: 4)
 
 puts "✅ Done seeding!"
