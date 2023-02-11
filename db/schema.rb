@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_11_203900) do
+ActiveRecord::Schema.define(version: 2023_02_11_205528) do
 
   create_table "chefs", force: :cascade do |t|
     t.string "first_name"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2023_02_11_203900) do
     t.string "image_url"
     t.integer "hours"
     t.string "ingredients"
-    t.integer "average_rating"
     t.integer "chef_id"
     t.string "cuisine_type"
     t.boolean "isFavorited"
