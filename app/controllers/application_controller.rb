@@ -41,7 +41,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/chefs" do
-    chef = Chef.create(first_name:params[:first_name], last_name:params[:last_name], image: params[:image], age: params[:age])
+    chef = Chef.create(first_name: params[:first_name], last_name: params[:last_name], image: params[:image], age: params[:age])
+    chef.to_json
+  end
+
+  delete "/chefs/:id" do
+    chef = Chef.find(params[:id])
+    chef.destroy
     chef.to_json
   end
 
