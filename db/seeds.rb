@@ -29,6 +29,7 @@ Chef.create(first_name: "Jamie", last_name: "Oliver", age: 47, image: "https://i
 Chef.create(first_name: "Alton", last_name: "Brown", age: 60, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4hmj926D5L0egBmg-7WOUSQn5lNpJjMzYdA&usqp=CAU", years_cooking: 29)
 Chef.create(first_name: "Ree", last_name: "Drummond", age: 54, image: "https://pbs.twimg.com/profile_images/989486563758354432/2NBOn09O_400x400.jpg", years_cooking: 17)
 Chef.create(first_name: "Remy", last_name: "The Rat", age: 4, image: "https://lumiere-a.akamaihd.net/v1/images/open-uri20150422-20810-f3qxzs_4923c203.jpeg?region=0,0,600,600", years_cooking: 3)
+Chef.create(first_name: "Alex", last_name: "Guarnaschelli", age: 53, image: "https://alexguarnaschelli.com/wp-content/uploads/2021/10/about-hero-mobile.jpg", years_cooking: 32)
 
 Review.create(author_name: "Bob", comment: "Could you please give the metric weight measurements, and sometime in the next twenty minutes; I’m making this for a dinner party and my guests are already here.", rating: 4, recipe_id: 2)
 Review.create(author_name: "GordanRamsayStan1000", comment: "Gordon Ramsay never fails - my favorite chef does it again!!!!! best lava cake you'll ever try.", rating: 5, recipe_id: 1)

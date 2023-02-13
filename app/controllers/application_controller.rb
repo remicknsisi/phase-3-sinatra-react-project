@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/recipes" do
-    recipe = Recipe.create(name:params[:name], instructions:params[:instructions], image_url: params[:image_url], hours: params[:hours], ingredients: params[:ingredients], average_rating: params[:average_rating], chef_id: params[:chef_id], cuisine_type: params[:cuisine_type], isFavorited: false)
+    recipe = Recipe.create(name:params[:name], instructions:params[:instructions], image_url: params[:image_url], hours: params[:hours], ingredients: params[:ingredients], chef_id: params[:chef_id], cuisine_type: params[:cuisine_type], isFavorited: false)
     recipe.to_json
   end
 
