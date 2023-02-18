@@ -1,9 +1,12 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
+# including this to meet read requirement
   get "/recipes" do
     recipes = Recipe.all
     recipes.to_json
+    # will need to restructure recipe CRUD actions in front end and updating of state - now that we are accessing via chef (remove chef_id foreign key)
+    # adding/deleting a recipe is now being treated as an update for a chef
   end
 
   get "/recipes/:id" do
@@ -30,9 +33,21 @@ class ApplicationController < Sinatra::Base
     recipe.to_json
   end
 
+  # do i need a patch that relies on a form? (technically can slide but try to replace this with a form)
+
   get "/chefs" do
     chefs = Chef.all
-    chefs.to_json
+    chefs.to_json(
+      include: [:recipes, :reviews]
+    )
+    # include: {
+    #   recipes: { [:recipe]
+    #     include: {
+    #       reviews: [:review]
+    #       }
+    #     }
+    #   }
+    # )
   end
 
   get "/chefs/:id" do
