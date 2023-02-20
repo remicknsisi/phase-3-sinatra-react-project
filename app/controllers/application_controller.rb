@@ -2,6 +2,7 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
 # including this to meet read requirement
+# Index Route for Recipes
   get "/recipes" do
     recipes = Recipe.all
     recipes.to_json
@@ -9,25 +10,34 @@ class ApplicationController < Sinatra::Base
     # adding/deleting a recipe is now being treated as an update for a chef
   end
 
+  #Recipes Show Route
   get "/recipes/:id" do
-    recipe = Recipe.find(params[:id])
-    recipe.to_json
-    # can i leave this route as is and then just go thru chefs to get at the recipes
+    recipe = Recipe.find_by(id: params[:id])
+    if recipe
+      recipe.to_json
+    else
+      "404 - Recipe not found"
+    end
   end
 
-  post "/recipes" do
-    recipe = Recipe.create(name:params[:name], instructions:params[:instructions], image_url: params[:image_url], hours: params[:hours], ingredients: params[:ingredients], chef_id: params[:chef_id], cuisine_type: params[:cuisine_type], isFavorited: false)
+  #Recipes Create Route
+  post "/chefs/:chef_id/recipes" do
+    chef = Chef.find_by(id: params[:chef_id])
+    recipe = chef.recipes.create(params)
+    # name: params[:name], instructions: params[:instructions], image_url: params[:image_url], hours: params[:hours], ingredients: params[:ingredients], chef_id: params[:chef_id], cuisine_type: params[:cuisine_type], isFavorited: params[:isFavorited]
     recipe.to_json
   end
 
-  delete "/recipes/:id" do
-    recipe = Recipe.find(params[:id])
+  #Recipe Destroy Route
+  delete "/chefs/:chef_id/recipes/:id" do
+    chef = Chef.find_by(id: params[:chef_id])
+    recipe = chef.recipes.find_by(id: params[:id])
     recipe.destroy
     recipe.to_json
   end
 
   patch "/recipes/:id" do
-    recipe = Recipe.find(params[:id])
+    recipe = Recipe.find_by(id: params[:id])
     recipe.update(
       isFavorited: params[:isFavorited]
     )
@@ -36,6 +46,7 @@ class ApplicationController < Sinatra::Base
 
   # do i need a patch that relies on a form? (technically can slide but try to replace this with a form)
 
+  # Index Route for Chefs
   get "/chefs" do
     chefs = Chef.all
     chefs.to_json(
@@ -43,9 +54,17 @@ class ApplicationController < Sinatra::Base
     )
   end
 
+  #Chefs Show Route
   get "/chefs/:id" do
-    chef = Chef.find(params[:id])
-    chef.to_json
+    chef = Chef.find_by(id: params[:id])
+
+    if chef
+      chef.to_json(
+        include: [:recipes, :reviews]
+      )
+    else
+      "404 - Chef not found"
+    end
   end
 
   post "/chefs" do
@@ -54,7 +73,7 @@ class ApplicationController < Sinatra::Base
   end
 
   delete "/chefs/:id" do
-    chef = Chef.find(params[:id])
+    chef = Chef.find_by(id: params[:id])
     chef.destroy
     chef.to_json
   end
