@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
   get "/recipes/:id" do
     recipe = Recipe.find(params[:id])
     recipe.to_json
+    # can i leave this route as is and then just go thru chefs to get at the recipes
   end
 
   post "/recipes" do
@@ -40,14 +41,6 @@ class ApplicationController < Sinatra::Base
     chefs.to_json(
       include: [:recipes, :reviews]
     )
-    # include: {
-    #   recipes: { [:recipe]
-    #     include: {
-    #       reviews: [:review]
-    #       }
-    #     }
-    #   }
-    # )
   end
 
   get "/chefs/:id" do
