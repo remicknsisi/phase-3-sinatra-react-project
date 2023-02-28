@@ -70,7 +70,7 @@ class ApplicationController < Sinatra::Base
 
   #Chefs Create Route
   post "/chefs" do
-    chef = Chef.create(first_name: params[:first_name], last_name: params[:last_name], image: params[:image], age: params[:age])
+    chef = Chef.create(params)
     chef.to_json
   end
 
