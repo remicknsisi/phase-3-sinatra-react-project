@@ -48,7 +48,7 @@ Review.create(author_name: "Joecartwheel", comment: "These turned out great and 
 50.times do
     Review.create(
         author_name: Faker::FunnyName.name,
-        comment: Faker::Lorem.sentences,
+        comment: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true),
         rating: rand(0..5),
         recipe_id: rand(1..11),
     )
