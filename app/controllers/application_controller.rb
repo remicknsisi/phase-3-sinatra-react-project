@@ -84,14 +84,7 @@ class ApplicationController < Sinatra::Base
   #Chefs Update Route
   patch "/chefs/:id" do
     chef = Chef.find_by(id: params[:id])
-    chef.update(params
-      # first_name: params[:first_name],
-      # last_name: params[:last_name],
-      # image: params[:image],
-      # years_cooking: [:years_cooking],
-      # age: [:age],
-      # bio: params[:bio]
-    )
+    chef.update(params)
     chef.to_json
   end
 
